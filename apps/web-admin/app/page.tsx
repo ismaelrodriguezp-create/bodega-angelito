@@ -133,11 +133,17 @@ export default function DashboardPage() {
       {/* ── Page Header ─────────────────────────────────────── */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2">
         <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="inline-flex items-center gap-1.5 bg-[#e8f0fe] text-[#1a73e8] text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 bg-[#1a73e8] rounded-full animate-pulse inline-block" />
+              En Tiempo Real
+            </span>
+          </div>
           <h1 className="text-[24px] md:text-[30px] font-bold text-[#1f1f1f] leading-tight tracking-tight">
-            Bienvenido de vuelta 👋
+            Centro de Inteligencia de Negocio
           </h1>
-          <p className="text-[14px] text-[#5f6368] mt-1 capitalize">
-            {new Date().toLocaleDateString('es-PE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          <p className="text-[14px] text-[#5f6368] mt-1">
+            Bodega Angelito · Aquí tienes todo lo que necesitas para tomar las mejores decisiones 📊
           </p>
         </div>
         <button
