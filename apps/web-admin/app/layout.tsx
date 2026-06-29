@@ -51,16 +51,16 @@ function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-0.5">
-          <SidebarItem icon="dashboard" label="Dashboard" active />
-          <SidebarItem icon="inventory" label="Productos" />
-          <SidebarItem icon="shopping_cart" label="Pedidos" badge="12" />
-          <SidebarItem icon="people" label="Clientes" />
-          <SidebarItem icon="bar_chart" label="Reportes" />
+          <SidebarItem icon="dashboard" label="Dashboard" href="/" active />
+          <SidebarItem icon="inventory" label="Productos" href="#" />
+          <SidebarItem icon="shopping_cart" label="Pedidos" href="#" badge="12" />
+          <SidebarItem icon="people" label="Clientes" href="#" />
+          <SidebarItem icon="bar_chart" label="Reportes" href="#" />
           <div className="pt-4 pb-2 px-3">
             <p className="text-[11px] font-semibold text-[#80868b] uppercase tracking-wider">Sistema</p>
           </div>
-          <SidebarItem icon="settings" label="Configuración" />
-          <SidebarItem icon="help" label="Ayuda" />
+          <SidebarItem icon="settings" label="Configuración" href="#" />
+          <SidebarItem icon="help" label="Ayuda" href="#" />
         </nav>
 
         {/* User Profile */}
@@ -137,7 +137,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SidebarItem({ icon, label, active, badge }: { icon: string; label: string; active?: boolean; badge?: string }) {
+function SidebarItem({ icon, label, active, badge, href = "#" }: { icon: string; label: string; active?: boolean; badge?: string; href?: string }) {
   const icons: Record<string, React.ReactNode> = {
     dashboard: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="2"/></svg>,
     inventory: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" strokeWidth="2"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" strokeWidth="2"/></svg>,
@@ -149,7 +149,8 @@ function SidebarItem({ icon, label, active, badge }: { icon: string; label: stri
   };
 
   return (
-    <button
+    <a
+      href={href}
       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left text-[14px] font-medium transition-all relative ${
         active
           ? "bg-[#e8f0fe] text-[#1a73e8]"
@@ -165,7 +166,7 @@ function SidebarItem({ icon, label, active, badge }: { icon: string; label: stri
           {badge}
         </span>
       )}
-    </button>
+    </a>
   );
 }
 
