@@ -16,7 +16,7 @@ export function formatDate(dateString: string | Date, includeTime = true): strin
     day: 'numeric',
     ...(includeTime && { hour: '2-digit', minute: '2-digit' }),
   };
-  return new Intl.DateTimeFormat('es-CL', options).format(date);
+  return new Intl.DateTimeFormat('es-PE', options).format(date);
 }
 
 export function generateSKU(name: string, categoryName = 'GEN'): string {

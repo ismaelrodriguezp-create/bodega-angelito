@@ -44,7 +44,7 @@ export function SalesOverviewChart() {
               fontSize: 13,
             }}
             labelStyle={{ color: "#1f1f1f", fontWeight: 600 }}
-            formatter={(v: number) => [`S/${v}`, "Ventas"]}
+            formatter={(value) => [`S/${Number(value ?? 0)}`, "Ventas"]}
           />
           <Area
             type="monotone"

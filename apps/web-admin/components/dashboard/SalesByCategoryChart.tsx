@@ -38,7 +38,7 @@ export function SalesByCategoryChart() {
                 boxShadow: "0 2px 8px rgba(60,64,67,.2)",
                 fontSize: 13,
               }}
-              formatter={(v: number) => [`${v}%`, "Participación"]}
+              formatter={(value) => [`${Number(value ?? 0)}%`, "Participación"]}
             />
           </PieChart>
         </ResponsiveContainer>

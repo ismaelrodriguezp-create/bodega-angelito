@@ -32,7 +32,7 @@ export function TopProductsChart() {
               boxShadow: "0 2px 8px rgba(60,64,67,.2)",
               fontSize: 13,
             }}
-            formatter={(v: number) => [v, "Ventas"]}
+            formatter={(value) => [Number(value ?? 0), "Ventas"]}
           />
           <Bar dataKey="sales" fill="#8430ce" radius={[0, 6, 6, 0]} barSize={20} />
         </BarChart>

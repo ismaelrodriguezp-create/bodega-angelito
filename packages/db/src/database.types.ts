@@ -455,6 +455,24 @@ export interface Database {
     }
     Views: {}
     Functions: {
+      create_product_with_stock: {
+        Args: {
+          p_store_id: string
+          p_name: string
+          p_brand?: string | null
+          p_sku?: string | null
+          p_barcode?: string | null
+          p_description?: string | null
+          p_category_id?: string | null
+          p_price?: number
+          p_cost?: number
+          p_initial_stock?: number
+          p_minimum_stock?: number
+          p_safety_stock?: number
+          p_location_in_store?: string | null
+        }
+        Returns: string
+      }
       get_current_worker_role: {
         Args: Record<PropertyKey, never>
         Returns: Database['public']['Enums']['worker_role']
