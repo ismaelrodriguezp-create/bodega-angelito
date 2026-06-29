@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} h-full`}>
-      <body className="min-h-full bg-[#f8f9fa] text-[#1f1f1f]">
+      <body className="min-h-full bg-[#f1f3f4] text-[#1f1f1f]">
         <Providers>
           <AppShell>{children}</AppShell>
         </Providers>
