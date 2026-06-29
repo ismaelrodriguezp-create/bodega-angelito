@@ -1,10 +1,9 @@
-export function formatCurrency(value: number, locale = 'es-CL', currency = 'CLP'): string {
-  // Para CLP, normalmente no mostramos decimales
+export function formatCurrency(value: number, locale = 'es-PE', currency = 'PEN'): string {
   const options: Intl.NumberFormatOptions = {
     style: 'currency',
     currency,
-    minimumFractionDigits: currency === 'CLP' ? 0 : 2,
-    maximumFractionDigits: currency === 'CLP' ? 0 : 2,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   };
   return new Intl.NumberFormat(locale, options).format(value);
 }

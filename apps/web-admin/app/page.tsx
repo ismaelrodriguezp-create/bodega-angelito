@@ -23,12 +23,12 @@ interface Product {
 // ─── Mock Data ───────────────────────────────────────────────────────────────
 
 const PRODUCTS: Product[] = [
-  { id: '1', sku: 'BEB-COLA-001', name: 'Coca Cola 1.5L', brand: 'Coca Cola', category: 'Bebidas', price: 5500, cost: 3800, stock: 45, minStock: 10 },
-  { id: '2', sku: 'LAC-LECH-002', name: 'Leche Gloria Evaporada', brand: 'Gloria', category: 'Lácteos', price: 3200, cost: 2100, stock: 4, minStock: 15 },
-  { id: '3', sku: 'ABA-ARRO-003', name: 'Arroz Costeño 1kg', brand: 'Costeño', category: 'Abarrotes', price: 4800, cost: 3200, stock: 80, minStock: 20 },
-  { id: '4', sku: 'PAN-MOLD-004', name: 'Panetón D\'Onofrio 900g', brand: 'D\'Onofrio', category: 'Panadería', price: 19900, cost: 14000, stock: 0, minStock: 8 },
-  { id: '5', sku: 'LIM-LAVA-005', name: 'Sapolio Lejía 2L', brand: 'Sapolio', category: 'Limpieza', price: 8900, cost: 6200, stock: 12, minStock: 5 },
-  { id: '6', sku: 'BEB-INKA-006', name: 'Inka Cola 3L', brand: 'Inka Cola', category: 'Bebidas', price: 9200, cost: 6500, stock: 8, minStock: 10 },
+  { id: '1', sku: 'BEB-COLA-001', name: 'Coca Cola 1.5L', brand: 'Coca Cola', category: 'Bebidas', price: 5.50, cost: 3.80, stock: 45, minStock: 10 },
+  { id: '2', sku: 'LAC-LECH-002', name: 'Leche Gloria Evaporada', brand: 'Gloria', category: 'Lácteos', price: 3.20, cost: 2.10, stock: 4, minStock: 15 },
+  { id: '3', sku: 'ABA-ARRO-003', name: 'Arroz Costeño 1kg', brand: 'Costeño', category: 'Abarrotes', price: 4.80, cost: 3.20, stock: 80, minStock: 20 },
+  { id: '4', sku: 'PAN-MOLD-004', name: 'Panetón D\'Onofrio 900g', brand: 'D\'Onofrio', category: 'Panadería', price: 19.90, cost: 14.00, stock: 0, minStock: 8 },
+  { id: '5', sku: 'LIM-LAVA-005', name: 'Sapolio Lejía 2L', brand: 'Sapolio', category: 'Limpieza', price: 8.90, cost: 6.20, stock: 12, minStock: 5 },
+  { id: '6', sku: 'BEB-INKA-006', name: 'Inka Cola 3L', brand: 'Inka Cola', category: 'Bebidas', price: 9.20, cost: 6.50, stock: 8, minStock: 10 },
 ];
 
 const CATEGORIES = ['Todos', 'Bebidas', 'Lácteos', 'Abarrotes', 'Panadería', 'Limpieza'];
@@ -160,11 +160,11 @@ export default function DashboardPage() {
 
 
       {/* ── KPI Cards ───────────────────────────────────────── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {KPI_DATA.map((kpi, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl p-5 border border-[#e8eaed] shadow-sm hover:shadow-md transition-all duration-200"
+            className="bg-white rounded-2xl p-6 border border-[#e8eaed] shadow-sm hover:shadow-md transition-all duration-200"
           >
             {/* Icon + badge row */}
             <div className="flex items-center justify-between mb-4">
@@ -198,9 +198,9 @@ export default function DashboardPage() {
 
 
       {/* ── Charts Row 1: Sales Trend + Category Donut ─────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Sales Overview spans 2 cols */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#dadce0] shadow-sm p-5">
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#dadce0] shadow-sm p-6 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between mb-1">
             <div>
               <h2 className="text-[16px] font-semibold text-[#1f1f1f]">Tendencia de Ventas</h2>
@@ -212,7 +212,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Category donut */}
-        <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-5">
+        <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-6 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between mb-1">
             <div>
               <h2 className="text-[16px] font-semibold text-[#1f1f1f]">Por Categoría</h2>
@@ -224,9 +224,9 @@ export default function DashboardPage() {
       </div>
 
       {/* ── Charts Row 2: Top Products + Inventory Summary ─── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Top products */}
-        <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-5">
+        <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-6 min-w-0 overflow-hidden">
           <div className="flex items-center justify-between mb-1">
             <div>
               <h2 className="text-[16px] font-semibold text-[#1f1f1f]">Top Productos</h2>
@@ -238,11 +238,11 @@ export default function DashboardPage() {
         </div>
 
         {/* Inventory & Quick Actions */}
-        <div className="lg:col-span-2 grid grid-rows-2 gap-4">
+        <div className="lg:col-span-2 grid grid-rows-2 gap-6">
           {/* Inventory Summary Card */}
-          <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-6">
             <h2 className="text-[16px] font-semibold text-[#1f1f1f] mb-4">Resumen de Inventario</h2>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-6">
               <div className="text-center p-3 bg-[#f8f9fa] rounded-xl">
                 <div className="text-[24px] font-semibold text-[#1f1f1f]">{PRODUCTS.length}</div>
                 <div className="text-[12px] text-[#5f6368] mt-0.5">SKUs Activos</div>
@@ -259,9 +259,9 @@ export default function DashboardPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-5">
+          <div className="bg-white rounded-2xl border border-[#dadce0] shadow-sm p-6">
             <h2 className="text-[16px] font-semibold text-[#1f1f1f] mb-4">Acciones Rápidas</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Agregar Producto', color: '#1a73e8', bg: '#e8f0fe', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/></svg>, action: () => setShowAddModal(true) },
                 { label: 'Importar CSV', color: '#8430ce', bg: '#f3e8fd', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><polyline points="17 8 12 3 7 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>, action: () => {} },

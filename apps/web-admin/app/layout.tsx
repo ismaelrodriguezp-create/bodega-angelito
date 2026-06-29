@@ -120,7 +120,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto pb-20 md:pb-6">
+        <main className="flex-1 overflow-y-auto pb-20 md:pb-6 bg-[#f0f2f5]">
           {children}
         </main>
       </div>
