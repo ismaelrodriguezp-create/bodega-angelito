@@ -20,6 +20,9 @@ import {
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { formatCurrency, generateSKU } from '@bodega-angelito/shared';
+import { SalesOverviewChart } from '../components/dashboard/SalesOverviewChart';
+import { TopProductsChart } from '../components/dashboard/TopProductsChart';
+import { SalesByCategoryChart } from '../components/dashboard/SalesByCategoryChart';
 
 interface DashboardProduct {
   id: string;
@@ -286,76 +289,17 @@ export default function AdminDashboard() {
           </Card>
         </section>
 
-        {/* Gráfico y Acciones Rápidas */}
+        {/* Charts Grid - Data Storytelling */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Custom SVG Analytics Chart */}
-          <Card className="bg-slate-900 border-border lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-sm font-semibold uppercase text-slate-400 tracking-wider">Movimiento Diario y Ventas</CardTitle>
-              <CardDescription>Resumen gráfico de rotación de productos en la última semana</CardDescription>
-            </CardHeader>
-            <CardContent className="h-64 flex flex-col justify-between">
-              {/* Gráfico SVG interactivo de alta calidad */}
-              <div className="relative w-full h-48 bg-slate-950/50 rounded border border-border/50 p-4 flex items-end">
-                {/* Ejes y líneas de fondo */}
-                <div className="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none opacity-10">
-                  <div className="border-b border-white w-full" />
-                  <div className="border-b border-white w-full" />
-                  <div className="border-b border-white w-full" />
-                  <div className="border-b border-white w-full" />
-                </div>
+          <SalesOverviewChart />
+          <SalesByCategoryChart />
+        </section>
 
-                <svg className="w-full h-full" viewBox="0 0 600 160" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
-                    </linearGradient>
-                  </defs>
-                  
-                  {/* Área rellenada */}
-                  <path 
-                    d="M0 160 Q 100 120, 200 80 T 400 40 T 600 110 L 600 160 L 0 160 Z" 
-                    fill="url(#chartGradient)"
-                  />
-                  
-                  {/* Línea principal */}
-                  <path 
-                    d="M0 160 Q 100 120, 200 80 T 400 40 T 600 110" 
-                    fill="none" 
-                    stroke="#3b82f6" 
-                    strokeWidth="3"
-                  />
-                  
-                  {/* Puntos interactivos destacados */}
-                  <circle cx="200" cy="80" r="5" fill="#60a5fa" stroke="#0f172a" strokeWidth="2" />
-                  <circle cx="400" cy="40" r="5" fill="#60a5fa" stroke="#0f172a" strokeWidth="2" />
-                  <circle cx="600" cy="110" r="5" fill="#3b82f6" stroke="#0f172a" strokeWidth="2" />
-                </svg>
-
-                {/* Etiquetas de datos encima de los puntos */}
-                <div className="absolute left-[33%] top-[35%] bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-[10px] text-slate-200 shadow font-mono">
-                  $340k
-                </div>
-                <div className="absolute left-[66%] top-[10%] bg-slate-900 border border-slate-700 rounded px-2 py-0.5 text-[10px] text-slate-200 shadow font-mono">
-                  $510k (Pico)
-                </div>
-              </div>
-              
-              <div className="flex justify-between items-center text-xs text-slate-400 px-2 mt-2">
-                <span>Lun</span>
-                <span>Mar</span>
-                <span>Mié (Stock Min)</span>
-                <span>Jue</span>
-                <span>Vie (Despachos)</span>
-                <span>Sáb (Ventas)</span>
-                <span>Dom</span>
-              </div>
-            </CardContent>
-          </Card>
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <TopProductsChart />
 
           {/* Quick Actions Panel */}
-          <Card className="bg-slate-900 border-border">
+          <Card className="bg-slate-900 border-border lg:col-span-2">
             <CardHeader>
               <CardTitle className="text-sm font-semibold uppercase text-slate-400 tracking-wider">Acciones de Gestión</CardTitle>
               <CardDescription>Accesos directos para control rápido</CardDescription>
