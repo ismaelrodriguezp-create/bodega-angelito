@@ -20,21 +20,22 @@ export function TopProductsChart() {
             type="category"
             axisLine={false}
             tickLine={false}
-            tick={{ fontSize: 11, fill: "#5f6368" }}
+            tick={{ fontSize: 12, fill: "#475569", fontFamily: "Plus Jakarta Sans", fontWeight: 500 }}
             width={110}
           />
           <Tooltip
-            cursor={{ fill: "rgba(241,243,244,0.8)" }}
+            cursor={{ fill: "rgba(241,245,249,0.6)" }}
             contentStyle={{
-              backgroundColor: "#fff",
-              borderRadius: "12px",
-              border: "1px solid #dadce0",
-              boxShadow: "0 2px 8px rgba(60,64,67,.2)",
+              backgroundColor: "#ffffff",
+              borderRadius: "16px",
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 10px 15px -3px rgba(15,23,42,0.08)",
               fontSize: 13,
+              fontFamily: "Plus Jakarta Sans"
             }}
             formatter={(value) => [Number(value ?? 0), "Ventas"]}
           />
-          <Bar dataKey="sales" fill="#8430ce" radius={[0, 6, 6, 0]} barSize={20} />
+          <Bar dataKey="sales" fill="#8b5cf6" radius={[0, 8, 8, 0]} barSize={16} />
         </BarChart>
       </ResponsiveContainer>
     </div>
