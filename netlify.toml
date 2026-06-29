@@ -1,0 +1,15 @@
+[build]
+  # Directorio base del monorepo
+  base = "."
+  # Comando de build — solo compila web-admin
+  command = "npm install && npx turbo run build --filter=web-admin"
+  # Carpeta de salida de Next.js
+  publish = "apps/web-admin/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+  TURBO_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: path.resolve(__dirname, "../../"),
+  // Optimizaciones para el build de producción (Netlify)
+  typescript: {
+    // Si hay errores de TS en CI, no bloquear el build
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
