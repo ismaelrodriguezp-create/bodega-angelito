@@ -7,7 +7,7 @@ import type { Database } from '@bodega-angelito/db';
 import { getWorkerByAuthId, toServiceClient } from '@bodega-angelito/services';
 
 // ─── Utilidad: cliente con service_role (bypasa RLS completamente) ────────────
-function getServiceClient() {
+export function getServiceClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !serviceKey) throw new Error('Faltan credenciales de servicio Supabase');
@@ -36,7 +36,7 @@ export async function signInAction(
       return { error: 'Debes confirmar tu email antes de ingresar.' };
     }
     if (error.message === 'Invalid login credentials') {
-      return { error: 'Email o contraseña incorrectos.' };
+      return { error: 'Email o contraseña incorrectos. Si olvidaste la contraseña, usa: node scripts/reset-admin-password.mjs' };
     }
     return { error: `Error de autenticación: ${error.message}` };
   }
@@ -48,12 +48,11 @@ export async function signInAction(
     if (!worker) {
       await supabase.auth.signOut();
       return {
-        error: 'Tu cuenta no está vinculada a un trabajador. Contacta al administrador.',
+        error: 'Tu cuenta no está vinculada a un trabajador en la base de datos.',
       };
     }
   } catch (e) {
     console.warn('[auth] No se pudo verificar worker, continuando:', e);
-    // Si hay error al verificar, igual permitimos el acceso en modo demo
   }
 
   redirect('/');
@@ -67,33 +66,25 @@ export async function signOut() {
 
 export async function getSessionWorker() {
   try {
-    // Intentar obtener la sesión real de Supabase
+    // Obtener la sesión real de Supabase
     const supabase = await createClient();
     const { data: { session }, error } = await supabase.auth.getSession();
 
     if (error || !session?.user) {
-      // Fallback al worker de demostración
-      return getDefaultWorker();
+      // Retornar null para obligar a ir a /login
+      return null;
     }
 
-    // Buscar el worker con service_role para evitar problemas de RLS
+    // Buscar el worker con service_role
     const serviceSupabase = getServiceClient();
     const worker = await getWorkerByAuthId(toServiceClient(serviceSupabase), session.user.id);
 
     if (worker) return worker;
-    return getDefaultWorker();
+    
+    // Si no tiene worker pero tiene sesión (ej. primer ingreso), retornamos null para desloguear
+    return null;
   } catch (e) {
-    console.warn('[auth] getSessionWorker falló, usando demo:', e);
-    return getDefaultWorker();
+    console.warn('[auth] getSessionWorker falló:', e);
+    return null;
   }
-}
-
-function getDefaultWorker() {
-  return {
-    id: '11111111-1111-1111-1111-111111111111',
-    firstName: 'Admin',
-    lastName: 'Bodega',
-    role: 'admin' as const,
-    storeId: process.env.NEXT_PUBLIC_DEFAULT_STORE_ID ?? '11111111-1111-1111-1111-111111111111',
-  };
 }
