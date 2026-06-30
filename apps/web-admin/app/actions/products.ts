@@ -48,8 +48,11 @@ export async function createProduct(
     });
 
     return { success: true, productId };
-  } catch (err) {
-    console.warn('Falla de Supabase, usando guardado mockeado para demo:', err);
-    return { success: true, productId: 'mock-' + Math.random().toString(36).substr(2, 9) };
+  } catch (err: any) {
+    console.error('Error al registrar producto en Supabase:', err);
+    return { 
+      success: false, 
+      error: `Error al guardar en base de datos: ${err.message || 'Error de conexión con Supabase'}` 
+    };
   }
 }
